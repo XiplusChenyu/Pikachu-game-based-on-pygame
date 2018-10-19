@@ -12,7 +12,7 @@ def run_game():
     background = pygame.transform.scale(background, (480, 300))
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption('pikachu invasion')  # set screen object
-    pikachu = Pikachu(screen)
+    pikachu = Pikachu(ai_settings, screen)
     while True:
         gf.check_events(pikachu)
         pikachu.update()
