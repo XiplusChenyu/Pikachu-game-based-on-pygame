@@ -2,23 +2,21 @@ import sys
 import pygame
 from settings import Settings
 from pikachu import Pikachu
+import game_functions as gf
 
 
 def run_game():
     pygame.init()
     ai_settings = Settings()
     background = pygame.image.load(r"images/bg.png")
+    background = pygame.transform.scale(background, (480, 300))
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption('pikachu invasion')  # set screen object
     pikachu = Pikachu(screen)
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-        screen.blit(background, (0, 0))
-        # screen.fill(ai_settings.bg_color)
-        pikachu.blitme()
-        pygame.display.flip()
+        gf.check_events(pikachu)
+        pikachu.update()
+        gf.update_screen(background, screen, pikachu)
 
 
 run_game()
