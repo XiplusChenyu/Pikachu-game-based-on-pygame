@@ -3,8 +3,8 @@ import pygame
 
 class Pikachu():
 
-    def __init__(self, ai_settings, screen):
-        self.ai_settings = ai_settings
+    def __init__(self, sets, screen):
+        self.sets = sets
         self.screen = screen   # Where (what screen) we put pikachu
         self.image = pygame.image.load('images/pikachu.bmp')  # surface object
         self.image = pygame.transform.scale(self.image, (45, 60))  # rescale
@@ -21,9 +21,9 @@ class Pikachu():
 
     def update(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:  # add moving range limit
-            self.centerxindex += self.ai_settings.speed_factor
+            self.centerxindex += self.sets.speed_factor
         if self.moving_left and self.rect.left > self.screen_rect.left:
-            self.centerxindex -= self.ai_settings.speed_factor
+            self.centerxindex -= self.sets.speed_factor
         self.rect.centerx = self.centerxindex
 
     def blitme(self):
